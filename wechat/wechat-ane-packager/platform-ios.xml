@@ -1,0 +1,12 @@
+<platform xmlns="http://ns.adobe.com/air/extension/20.0"> 
+    <description>openane-wechat</description> 
+    <copyright>2016 Open ANE</copyright>
+    <linkerOptions>
+        <option>-framework Security</option>
+        <option>-framework UIKit</option>
+        <option>-framework CoreTelephony</option>
+    </linkerOptions>
+    <packagedDependencies>
+        <packagedDependency>libopenane.a</packagedDependency>
+    </packagedDependencies>
+</platform>

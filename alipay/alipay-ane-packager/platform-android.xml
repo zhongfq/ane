@@ -1,0 +1,8 @@
+<platform xmlns="http://ns.adobe.com/air/extension/20.0"> 
+    <description>openane-alipay</description> 
+    <copyright>2016 Open ANE</copyright>
+    <packagedDependencies>
+        <packagedDependency>alipaysdk.jar</packagedDependency>
+        <packagedDependency>openane.jar</packagedDependency>
+    </packagedDependencies>
+</platform>

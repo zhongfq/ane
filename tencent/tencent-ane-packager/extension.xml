@@ -1,0 +1,23 @@
+<extension xmlns="http://ns.adobe.com/air/extension/20.0">
+	<id>openane.tencent.Tencent</id>
+	<versionNumber>1</versionNumber>
+	<platforms>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libtencent.jar</nativeLibrary>
+				<initializer>openane.tencent.TencentExtension</initializer>
+				<finalizer>openane.tencent.TencentExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="iPhone-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libtencent.a</nativeLibrary>
+				<initializer>openaneTencentInitializer</initializer>
+				<finalizer>openaneTencentFinalizer</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="default">
+    		<applicationDeployment/>
+		</platform>
+	</platforms>
+</extension>

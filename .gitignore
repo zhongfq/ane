@@ -1,0 +1,13 @@
+.wechat_packagename
+.idea/workspace.xml
+.idea/libraries/
+build/
+
+test/.idea/workspace.xml
+test/.idea/libraries/
+test/build/
+test/certificates/*
+
+
+*/*-ios/*-ios.xcodeproj/xcuserdata/
+*/*-ios/*-ios.xcodeproj/project.xcworkspace/xcuserdata/

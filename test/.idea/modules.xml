@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alipay-test/alipay-test.iml" filepath="$PROJECT_DIR$/alipay-test/alipay-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iapstore-test/iapstore-test.iml" filepath="$PROJECT_DIR$/iapstore-test/iapstore-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tencent-test/tencent-test.iml" filepath="$PROJECT_DIR$/tencent-test/tencent-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-test/wechat-test.iml" filepath="$PROJECT_DIR$/wechat-test/wechat-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weibo-test/weibo-test.iml" filepath="$PROJECT_DIR$/weibo-test/weibo-test.iml" />
+    </modules>
+  </component>
+</project>

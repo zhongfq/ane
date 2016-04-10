@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alipay/alipay-android/alipay-android.iml" filepath="$PROJECT_DIR$/alipay/alipay-android/alipay-android.iml" group="alipay" />
+      <module fileurl="file://$PROJECT_DIR$/alipay/alipay-as/alipay-as.iml" filepath="$PROJECT_DIR$/alipay/alipay-as/alipay-as.iml" group="alipay" />
+      <module fileurl="file://$PROJECT_DIR$/iapstore/iapstore-as/iapstore-as.iml" filepath="$PROJECT_DIR$/iapstore/iapstore-as/iapstore-as.iml" group="iapstore" />
+      <module fileurl="file://$PROJECT_DIR$/openane/openane-android/openane-android.iml" filepath="$PROJECT_DIR$/openane/openane-android/openane-android.iml" group="openane" />
+      <module fileurl="file://$PROJECT_DIR$/tencent/tencent-android/tencent-android.iml" filepath="$PROJECT_DIR$/tencent/tencent-android/tencent-android.iml" group="tencent" />
+      <module fileurl="file://$PROJECT_DIR$/tencent/tencent-as/tencent-as.iml" filepath="$PROJECT_DIR$/tencent/tencent-as/tencent-as.iml" group="tencent" />
+      <module fileurl="file://$PROJECT_DIR$/wechat/wechat-android/wechat-android.iml" filepath="$PROJECT_DIR$/wechat/wechat-android/wechat-android.iml" group="wechat" />
+      <module fileurl="file://$PROJECT_DIR$/wechat/wechat-as/wechat-as.iml" filepath="$PROJECT_DIR$/wechat/wechat-as/wechat-as.iml" group="wechat" />
+      <module fileurl="file://$PROJECT_DIR$/weibo/weibo-android/weibo-android.iml" filepath="$PROJECT_DIR$/weibo/weibo-android/weibo-android.iml" group="weibo" />
+      <module fileurl="file://$PROJECT_DIR$/weibo/weibo-as/weibo-as.iml" filepath="$PROJECT_DIR$/weibo/weibo-as/weibo-as.iml" group="weibo" />
+    </modules>
+  </component>
+</project>

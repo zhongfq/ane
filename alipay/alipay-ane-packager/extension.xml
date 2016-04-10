@@ -1,0 +1,23 @@
+<extension xmlns="http://ns.adobe.com/air/extension/20.0">
+	<id>openane.alipay.Alipay</id>
+	<versionNumber>1</versionNumber>
+	<platforms>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libalipay.jar</nativeLibrary>
+				<initializer>openane.alipay.AlipayExtension</initializer>
+				<finalizer>openane.alipay.AlipayExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="iPhone-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libalipay.a</nativeLibrary>
+				<initializer>openaneAlipayInitializer</initializer>
+				<finalizer>openaneAlipayFinalizer</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="default">
+    		<applicationDeployment/>
+		</platform>
+	</platforms>
+</extension>

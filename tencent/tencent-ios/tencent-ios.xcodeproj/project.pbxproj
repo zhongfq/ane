@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E21B8A11CB64FA4002609B4 /* libopenane.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C72051CAD04470014BDC3 /* libopenane.a */; };
+		0E5C71F91CAD03FC0014BDC3 /* openaneTencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71F81CAD03FC0014BDC3 /* openaneTencent.m */; };
+		0E5C720C1CAD05F10014BDC3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */; };
+		0E5C720D1CAD06290014BDC3 /* TencentOpenAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */; };
+		0E5C720E1CAD06290014BDC3 /* TencentOpenApi_IOS_Bundle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C72091CAD05790014BDC3 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		0E5C720F1CAD06290014BDC3 /* libtencent.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C71F31CAD03FC0014BDC3 /* libtencent.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E5C72041CAD04470014BDC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E5C72001CAD04460014BDC3 /* openane.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0E5C71C01CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0E5C71F11CAD03FC0014BDC3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "/Users/O/Desktop/ttsz-v2/client/openane/tencent/tencent-ane-packager/iPhone-ARM";
+			dstSubfolderSpec = 0;
+			files = (
+				0E21B8A11CB64FA4002609B4 /* libopenane.a in CopyFiles */,
+				0E5C720D1CAD06290014BDC3 /* TencentOpenAPI.framework in CopyFiles */,
+				0E5C720E1CAD06290014BDC3 /* TencentOpenApi_IOS_Bundle.bundle in CopyFiles */,
+				0E5C720F1CAD06290014BDC3 /* libtencent.a in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0E5C71F31CAD03FC0014BDC3 /* libtencent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtencent.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E5C71F61CAD03FC0014BDC3 /* openaneTencent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openaneTencent.h; sourceTree = "<group>"; };
+		0E5C71F81CAD03FC0014BDC3 /* openaneTencent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = openaneTencent.m; sourceTree = "<group>"; };
+		0E5C72001CAD04460014BDC3 /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = ../../openane/openane.xcodeproj; sourceTree = "<group>"; };
+		0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		0E5C72091CAD05790014BDC3 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E5C71F01CAD03FC0014BDC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5C720C1CAD05F10014BDC3 /* TencentOpenAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E5C71EA1CAD03FB0014BDC3 = {
+			isa = PBXGroup;
+			children = (
+				0E5C72001CAD04460014BDC3 /* openane.xcodeproj */,
+				0E5C72071CAD05790014BDC3 /* libtencent */,
+				0E5C71F51CAD03FC0014BDC3 /* tencent-ios */,
+				0E5C71F41CAD03FC0014BDC3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E5C71F41CAD03FC0014BDC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C71F31CAD03FC0014BDC3 /* libtencent.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E5C71F51CAD03FC0014BDC3 /* tencent-ios */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C71F61CAD03FC0014BDC3 /* openaneTencent.h */,
+				0E5C71F81CAD03FC0014BDC3 /* openaneTencent.m */,
+			);
+			path = "tencent-ios";
+			sourceTree = "<group>";
+		};
+		0E5C72011CAD04460014BDC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C72051CAD04470014BDC3 /* libopenane.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E5C72071CAD05790014BDC3 /* libtencent */ = {
+			isa = PBXGroup;
+			children = (
+				0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */,
+				0E5C72091CAD05790014BDC3 /* TencentOpenApi_IOS_Bundle.bundle */,
+			);
+			path = libtencent;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E5C71F21CAD03FC0014BDC3 /* tencent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E5C71FC1CAD03FC0014BDC3 /* Build configuration list for PBXNativeTarget "tencent" */;
+			buildPhases = (
+				0E5C71EF1CAD03FC0014BDC3 /* Sources */,
+				0E5C71F01CAD03FC0014BDC3 /* Frameworks */,
+				0E5C71F11CAD03FC0014BDC3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tencent;
+			productName = "tencent-ios";
+			productReference = 0E5C71F31CAD03FC0014BDC3 /* libtencent.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E5C71EB1CAD03FB0014BDC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = openane;
+				TargetAttributes = {
+					0E5C71F21CAD03FC0014BDC3 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 0E5C71EE1CAD03FB0014BDC3 /* Build configuration list for PBXProject "tencent-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0E5C71EA1CAD03FB0014BDC3;
+			productRefGroup = 0E5C71F41CAD03FC0014BDC3 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0E5C72011CAD04460014BDC3 /* Products */;
+					ProjectRef = 0E5C72001CAD04460014BDC3 /* openane.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				0E5C71F21CAD03FC0014BDC3 /* tencent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0E5C72051CAD04470014BDC3 /* libopenane.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libopenane.a;
+			remoteRef = 0E5C72041CAD04470014BDC3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E5C71EF1CAD03FC0014BDC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E5C71F91CAD03FC0014BDC3 /* openaneTencent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0E5C71FA1CAD03FC0014BDC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0E5C71FB1CAD03FC0014BDC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0E5C71FD1CAD03FC0014BDC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libtencent",
+				);
+				HEADER_SEARCH_PATHS = ../../openane/openane;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0E5C71FE1CAD03FC0014BDC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/libtencent",
+				);
+				HEADER_SEARCH_PATHS = ../../openane/openane;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E5C71EE1CAD03FB0014BDC3 /* Build configuration list for PBXProject "tencent-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E5C71FA1CAD03FC0014BDC3 /* Debug */,
+				0E5C71FB1CAD03FC0014BDC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E5C71FC1CAD03FC0014BDC3 /* Build configuration list for PBXNativeTarget "tencent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E5C71FD1CAD03FC0014BDC3 /* Debug */,
+				0E5C71FE1CAD03FC0014BDC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E5C71EB1CAD03FB0014BDC3 /* Project object */;
+}

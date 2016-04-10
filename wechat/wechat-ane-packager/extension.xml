@@ -1,0 +1,23 @@
+<extension xmlns="http://ns.adobe.com/air/extension/20.0">
+	<id>openane.wechat.WeChat</id>
+	<versionNumber>1</versionNumber>
+	<platforms>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libwechat.jar</nativeLibrary>
+				<initializer>openane.wechat.WeChatExtension</initializer>
+				<finalizer>openane.wechat.WeChatExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="iPhone-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libwechat.a</nativeLibrary>
+				<initializer>openaneWeChatInitializer</initializer>
+				<finalizer>openaneWeChatFinalizer</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="default">
+    		<applicationDeployment/>
+		</platform>
+	</platforms>
+</extension>

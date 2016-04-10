@@ -1,0 +1,23 @@
+<extension xmlns="http://ns.adobe.com/air/extension/20.0">
+	<id>openane.weibo.Weibo</id>
+	<versionNumber>1</versionNumber>
+	<platforms>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libweibo.jar</nativeLibrary>
+				<initializer>openane.weibo.WeiboExtension</initializer>
+				<finalizer>openane.weibo.WeiboExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="iPhone-ARM">
+			<applicationDeployment>
+				<nativeLibrary>libweibo.a</nativeLibrary>
+				<initializer>openaneWeiboInitializer</initializer>
+				<finalizer>openaneWeiboFinalizer</finalizer>
+			</applicationDeployment>
+		</platform>
+		<platform name="default">
+    		<applicationDeployment/>
+		</platform>
+	</platforms>
+</extension>

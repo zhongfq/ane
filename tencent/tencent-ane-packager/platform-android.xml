@@ -1,0 +1,8 @@
+<platform xmlns="http://ns.adobe.com/air/extension/20.0"> 
+    <description>openane-tencent</description> 
+    <copyright>2016 Open ANE</copyright>
+    <packagedDependencies>
+        <packagedDependency>open_sdk.jar</packagedDependency>
+        <packagedDependency>openane.jar</packagedDependency>
+    </packagedDependencies>
+</platform>
