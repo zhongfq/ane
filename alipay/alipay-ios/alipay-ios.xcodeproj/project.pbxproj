@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E2D87D51CB64D3000387BC4 /* libopenane.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C71E61CAD011B0014BDC3 /* libopenane.a */; };
 		0E5C71621CAA791B0014BDC3 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71521CAA791B0014BDC3 /* base64.m */; };
 		0E5C71631CAA791B0014BDC3 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71551CAA791B0014BDC3 /* DataSigner.m */; };
 		0E5C71641CAA791B0014BDC3 /* DataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71571CAA791B0014BDC3 /* DataVerifier.m */; };
@@ -16,11 +15,8 @@
 		0E5C71671CAA791B0014BDC3 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C715D1CAA791B0014BDC3 /* openssl_wrapper.m */; };
 		0E5C71681CAA791B0014BDC3 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C715F1CAA791B0014BDC3 /* RSADataSigner.m */; };
 		0E5C71691CAA791B0014BDC3 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71611CAA791B0014BDC3 /* RSADataVerifier.m */; };
-		0E5C71871CAAB5670014BDC3 /* AlipaySDK.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0EAA224B1CAA0ECC0095CE9A /* AlipaySDK.framework */; };
 		0E962CF01CA8172E00EF3A30 /* openaneAlipay.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E962CEF1CA8172E00EF3A30 /* openaneAlipay.m */; };
 		0EAA224C1CAA0ECC0095CE9A /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAA224B1CAA0ECC0095CE9A /* AlipaySDK.framework */; };
-		0EAA224E1CAA0F2C0095CE9A /* libalipay.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E962CEA1CA8172D00EF3A30 /* libalipay.a */; };
-		0EAA224F1CAA0F750095CE9A /* AlipaySDK.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0EAA224A1CAA0ECC0095CE9A /* AlipaySDK.bundle */; };
 		0EAA22521CAA10000095CE9A /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAA22501CAA10000095CE9A /* libcrypto.a */; };
 		0EAA22531CAA10000095CE9A /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAA22511CAA10000095CE9A /* libssl.a */; };
 		0EAA22591CAA10440095CE9A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAA22581CAA10440095CE9A /* CoreMotion.framework */; };
@@ -28,6 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E5C64EF1CBB755A002776E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E5C71E11CAD011A0014BDC3 /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
 		0E5C71E51CAD011B0014BDC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E5C71E11CAD011A0014BDC3 /* openane.xcodeproj */;
@@ -36,22 +39,6 @@
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0EAA224D1CAA0EF70095CE9A /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "/Users/O/Desktop/ttsz-v2/client/openane/alipay/alipay-ane-packager/iPhone-ARM";
-			dstSubfolderSpec = 0;
-			files = (
-				0E2D87D51CB64D3000387BC4 /* libopenane.a in CopyFiles */,
-				0E5C71871CAAB5670014BDC3 /* AlipaySDK.framework in CopyFiles */,
-				0EAA224F1CAA0F750095CE9A /* AlipaySDK.bundle in CopyFiles */,
-				0EAA224E1CAA0F2C0095CE9A /* libalipay.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E5C71051CAA791B0014BDC3 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
@@ -365,11 +352,12 @@
 			buildPhases = (
 				0E962CE61CA8172D00EF3A30 /* Sources */,
 				0E962CE71CA8172D00EF3A30 /* Frameworks */,
-				0EAA224D1CAA0EF70095CE9A /* CopyFiles */,
+				0E5C64F21CBB7571002776E1 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E5C64F01CBB755A002776E1 /* PBXTargetDependency */,
 			);
 			name = alipay;
 			productName = "alipay-ios";
@@ -423,6 +411,22 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E5C64F21CBB7571002776E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy libs:\"\nPACKAGER_DIR=$PROJECT_DIR/../${PROJECT_NAME/-ios/-ane}-packager/iPhone-ARM\ncp -rvf $BUILT_PRODUCTS_DIR/*.a $PACKAGER_DIR\ncp -rvf $PROJECT_DIR/libalipay/AlipaySDK.bundle $PACKAGER_DIR\ncp -rvf $PROJECT_DIR/libalipay/AlipaySDK.framework $PACKAGER_DIR";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E962CE61CA8172D00EF3A30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -441,6 +445,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E5C64F01CBB755A002776E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openane;
+			targetProxy = 0E5C64EF1CBB755A002776E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0E962CF11CA8172E00EF3A30 /* Debug */ = {

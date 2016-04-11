@@ -22,7 +22,6 @@ NSString *openaneObjectToString(FREObject obj)
 NSNumber *openaneObjectToNumber(FREObject obj)
 {
     double value = 0;
-    uint32_t len = 0;
 
     if (FREGetObjectAsDouble(obj, &value) == FRE_OK)
     {

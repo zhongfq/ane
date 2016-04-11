@@ -7,13 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E2D87D81CB64DBA00387BC4 /* libopenane.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E78A6B71CB3B96300E9F30F /* libopenane.a */; };
 		0E78A6AC1CB3B92800E9F30F /* openaneIAPStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E78A6AB1CB3B92800E9F30F /* openaneIAPStore.m */; };
 		0E78A6BD1CB3B99B00E9F30F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E78A6BC1CB3B99B00E9F30F /* StoreKit.framework */; };
-		0E78A6CC1CB4B13400E9F30F /* libiapstore.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E78A6A61CB3B92800E9F30F /* libiapstore.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E5C64EB1CBB72AF002776E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
 		0E78A6B61CB3B96300E9F30F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */;
@@ -22,20 +27,6 @@
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0E78A6A41CB3B92800E9F30F /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "/Users/O/Desktop/ttsz-v2/client/openane/iapstore/iapstore-ane-packager/iPhone-ARM";
-			dstSubfolderSpec = 0;
-			files = (
-				0E2D87D81CB64DBA00387BC4 /* libopenane.a in CopyFiles */,
-				0E78A6CC1CB4B13400E9F30F /* libiapstore.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E78A6A61CB3B92800E9F30F /* libiapstore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiapstore.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,11 +100,12 @@
 			buildPhases = (
 				0E78A6A21CB3B92800E9F30F /* Sources */,
 				0E78A6A31CB3B92800E9F30F /* Frameworks */,
-				0E78A6A41CB3B92800E9F30F /* CopyFiles */,
+				0E682B9E1CBB6D37009F2C60 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E5C64EC1CBB72AF002776E1 /* PBXTargetDependency */,
 			);
 			name = iapstore;
 			productName = "iapstore-ios";
@@ -167,6 +159,22 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E682B9E1CBB6D37009F2C60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy libs:\"\ncp -rvf $BUILT_PRODUCTS_DIR/*.a $PROJECT_DIR/../${PROJECT_NAME/-ios/-ane}-packager/iPhone-ARM/";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E78A6A21CB3B92800E9F30F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +185,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E5C64EC1CBB72AF002776E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openane;
+			targetProxy = 0E5C64EB1CBB72AF002776E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0E78A6AD1CB3B92800E9F30F /* Debug */ = {

@@ -60,13 +60,10 @@
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
     @autoreleasepool {
-        if (response.products.count > 0)
-        {
-            self.products = response.products;
-            FREDispatchStatusEventAsync(self.context,
-                                        FRESTR("productDetailsSuccess"),
-                                        FRESTR([openaneProductsToString(response.products) UTF8String]));
-        }
+        self.products = response.products;
+        FREDispatchStatusEventAsync(self.context,
+                                    FRESTR("productDetailsSuccess"),
+                                    FRESTR([openaneProductsToString(response.products) UTF8String]));
         
         if (response.invalidProductIdentifiers.count > 0)
         {

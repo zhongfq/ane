@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E21B89E1CB64F82002609B4 /* libopenane.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C71E01CAD01010014BDC3 /* libopenane.a */; };
 		0E9481881CA38BF500ADEDE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9481871CA38BF500ADEDE9 /* Foundation.framework */; };
-		0E94818B1CA38E4200ADEDE9 /* libweibo.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0EB6A1771CA28D0800777938 /* libweibo.a */; };
 		0E9481911CA39B6700ADEDE9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9481901CA39B6700ADEDE9 /* CoreGraphics.framework */; };
 		0E9481931CA39B7400ADEDE9 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9481921CA39B7400ADEDE9 /* ImageIO.framework */; };
 		0E9481951CA3B1F500ADEDE9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9481941CA3B1F500ADEDE9 /* UIKit.framework */; };
 		0E9481971CA3B2B700ADEDE9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9481961CA3B2B700ADEDE9 /* SystemConfiguration.framework */; };
 		0E9481991CA3B35A00ADEDE9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E9481981CA3B35A00ADEDE9 /* CoreTelephony.framework */; };
-		0E9481AE1CA3DCEE00ADEDE9 /* WeiboSDK.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0EB6A18E1CA28E9800777938 /* WeiboSDK.bundle */; };
 		0EB6A17D1CA28D0800777938 /* openaneWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6A17C1CA28D0800777938 /* openaneWeibo.m */; };
 		0EB6A1911CA28E9800777938 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EB6A1841CA28E9800777938 /* libWeiboSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E5C65001CBB78C0002776E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
 		0E5C71DF1CAD01010014BDC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */;
@@ -29,21 +33,6 @@
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0E94818A1CA38CE600ADEDE9 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "/Users/O/Desktop/ttsz-v2/client/openane/weibo/weibo-ane-packager/iPhone-ARM";
-			dstSubfolderSpec = 0;
-			files = (
-				0E21B89E1CB64F82002609B4 /* libopenane.a in CopyFiles */,
-				0E9481AE1CA3DCEE00ADEDE9 /* WeiboSDK.bundle in CopyFiles */,
-				0E94818B1CA38E4200ADEDE9 /* libweibo.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = ../../openane/openane.xcodeproj; sourceTree = "<group>"; };
@@ -177,11 +166,12 @@
 			buildPhases = (
 				0EB6A1731CA28D0800777938 /* Sources */,
 				0EB6A1741CA28D0800777938 /* Frameworks */,
-				0E94818A1CA38CE600ADEDE9 /* CopyFiles */,
+				0E5C65031CBB78E6002776E1 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E5C65011CBB78C0002776E1 /* PBXTargetDependency */,
 			);
 			name = weibo;
 			productName = "weibo-ios";
@@ -236,6 +226,22 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E5C65031CBB78E6002776E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy libs:\"\nPACKAGER_DIR=$PROJECT_DIR/../${PROJECT_NAME/-ios/-ane}-packager/iPhone-ARM\ncp -rvf $BUILT_PRODUCTS_DIR/*.a $PACKAGER_DIR\ncp -rvf $PROJECT_DIR/libWeiboSDK/WeiboSDK.bundle $PACKAGER_DIR";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0EB6A1731CA28D0800777938 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -246,6 +252,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E5C65011CBB78C0002776E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openane;
+			targetProxy = 0E5C65001CBB78C0002776E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0EB6A17E1CA28D0800777938 /* Debug */ = {

@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E21B8A11CB64FA4002609B4 /* libopenane.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C72051CAD04470014BDC3 /* libopenane.a */; };
 		0E5C71F91CAD03FC0014BDC3 /* openaneTencent.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71F81CAD03FC0014BDC3 /* openaneTencent.m */; };
 		0E5C720C1CAD05F10014BDC3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */; };
-		0E5C720D1CAD06290014BDC3 /* TencentOpenAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */; };
-		0E5C720E1CAD06290014BDC3 /* TencentOpenApi_IOS_Bundle.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C72091CAD05790014BDC3 /* TencentOpenApi_IOS_Bundle.bundle */; };
-		0E5C720F1CAD06290014BDC3 /* libtencent.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C71F31CAD03FC0014BDC3 /* libtencent.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E5C64F51CBB77C7002776E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E5C72001CAD04460014BDC3 /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
 		0E5C72041CAD04470014BDC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E5C72001CAD04460014BDC3 /* openane.xcodeproj */;
@@ -24,22 +27,6 @@
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0E5C71F11CAD03FC0014BDC3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "/Users/O/Desktop/ttsz-v2/client/openane/tencent/tencent-ane-packager/iPhone-ARM";
-			dstSubfolderSpec = 0;
-			files = (
-				0E21B8A11CB64FA4002609B4 /* libopenane.a in CopyFiles */,
-				0E5C720D1CAD06290014BDC3 /* TencentOpenAPI.framework in CopyFiles */,
-				0E5C720E1CAD06290014BDC3 /* TencentOpenApi_IOS_Bundle.bundle in CopyFiles */,
-				0E5C720F1CAD06290014BDC3 /* libtencent.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E5C71F31CAD03FC0014BDC3 /* libtencent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtencent.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,11 +102,12 @@
 			buildPhases = (
 				0E5C71EF1CAD03FC0014BDC3 /* Sources */,
 				0E5C71F01CAD03FC0014BDC3 /* Frameworks */,
-				0E5C71F11CAD03FC0014BDC3 /* CopyFiles */,
+				0E5C64F81CBB77CE002776E1 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E5C64F61CBB77C7002776E1 /* PBXTargetDependency */,
 			);
 			name = tencent;
 			productName = "tencent-ios";
@@ -173,6 +161,22 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E5C64F81CBB77CE002776E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy libs:\"\nPACKAGER_DIR=$PROJECT_DIR/../${PROJECT_NAME/-ios/-ane}-packager/iPhone-ARM\ncp -rvf $BUILT_PRODUCTS_DIR/*.a $PACKAGER_DIR\ncp -rvf $PROJECT_DIR/libtencent/TencentOpenApi_IOS_Bundle.bundle $PACKAGER_DIR\ncp -rvf $PROJECT_DIR/libtencent/TencentOpenAPI.framework $PACKAGER_DIR";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E5C71EF1CAD03FC0014BDC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -183,6 +187,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E5C64F61CBB77C7002776E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openane;
+			targetProxy = 0E5C64F51CBB77C7002776E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0E5C71FA1CAD03FC0014BDC3 /* Debug */ = {

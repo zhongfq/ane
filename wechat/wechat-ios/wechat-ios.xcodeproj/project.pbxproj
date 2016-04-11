@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E21B8A41CB64FC1002609B4 /* libopenane.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C71DA1CACFF0D0014BDC3 /* libopenane.a */; };
 		0E5C71971CABCDB20014BDC3 /* openaneWeChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E5C71961CABCDB20014BDC3 /* openaneWeChat.m */; };
 		0E5C71A31CABCEFC0014BDC3 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C719E1CABCEFC0014BDC3 /* libWeChatSDK.a */; };
 		0E5C71AC1CAC11780014BDC3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C71AB1CAC11780014BDC3 /* Security.framework */; };
 		0E5C71AE1CAC117D0014BDC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C71AD1CAC117D0014BDC3 /* UIKit.framework */; };
-		0E5C71AF1CAC12A90014BDC3 /* libwechat.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0E5C71911CABCDB20014BDC3 /* libwechat.a */; };
 		0E5C71B11CAC13EE0014BDC3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C71B01CAC13EE0014BDC3 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E5C64FB1CBB786E002776E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
 		0E5C71D91CACFF0D0014BDC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */;
@@ -25,20 +30,6 @@
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0E5C718F1CABCDB20014BDC3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "/Users/O/Desktop/ttsz-v2/client/openane/wechat/wechat-ane-packager/iPhone-ARM";
-			dstSubfolderSpec = 0;
-			files = (
-				0E21B8A41CB64FC1002609B4 /* libopenane.a in CopyFiles */,
-				0E5C71AF1CAC12A90014BDC3 /* libwechat.a in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E5C71911CABCDB20014BDC3 /* libwechat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libwechat.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,11 +126,12 @@
 			buildPhases = (
 				0E5C718D1CABCDB20014BDC3 /* Sources */,
 				0E5C718E1CABCDB20014BDC3 /* Frameworks */,
-				0E5C718F1CABCDB20014BDC3 /* CopyFiles */,
+				0E5C64FD1CBB7871002776E1 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E5C64FC1CBB786E002776E1 /* PBXTargetDependency */,
 			);
 			name = wechat;
 			productName = "wechat-ios";
@@ -193,6 +185,22 @@
 		};
 /* End PBXReferenceProxy section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E5C64FD1CBB7871002776E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"copy libs:\"\nPACKAGER_DIR=$PROJECT_DIR/../${PROJECT_NAME/-ios/-ane}-packager/iPhone-ARM\ncp -rvf $BUILT_PRODUCTS_DIR/*.a $PACKAGER_DIR";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0E5C718D1CABCDB20014BDC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,6 +211,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E5C64FC1CBB786E002776E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openane;
+			targetProxy = 0E5C64FB1CBB786E002776E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0E5C71981CABCDB20014BDC3 /* Debug */ = {
