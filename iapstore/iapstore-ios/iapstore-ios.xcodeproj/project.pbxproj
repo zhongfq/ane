@@ -12,27 +12,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E5C64EB1CBB72AF002776E1 /* PBXContainerItemProxy */ = {
+		0E6775871CBB906C009129DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-		0E78A6B61CB3B96300E9F30F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */;
+			containerPortal = 0E6775831CBB906C009129DD /* openane.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0E5C71C01CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
+		0E6775891CBB9072009129DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6775831CBB906C009129DD /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E6775831CBB906C009129DD /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = "../../openane/openane-ios/openane.xcodeproj"; sourceTree = "<group>"; };
 		0E78A6A61CB3B92800E9F30F /* libiapstore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiapstore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E78A6A91CB3B92800E9F30F /* openaneIAPStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openaneIAPStore.h; sourceTree = "<group>"; };
 		0E78A6AB1CB3B92800E9F30F /* openaneIAPStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = openaneIAPStore.m; sourceTree = "<group>"; };
-		0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = ../../openane/openane.xcodeproj; sourceTree = "<group>"; };
 		0E78A6BC1CB3B99B00E9F30F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -48,10 +48,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E6775841CBB906C009129DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E6775881CBB906C009129DD /* libopenane.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0E78A69D1CB3B92700E9F30F = {
 			isa = PBXGroup;
 			children = (
-				0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */,
+				0E6775831CBB906C009129DD /* openane.xcodeproj */,
 				0E78A6A81CB3B92800E9F30F /* iapstore-ios */,
 				0E78A6BB1CB3B98900E9F30F /* Frameworks */,
 				0E78A6A71CB3B92800E9F30F /* Products */,
@@ -73,14 +81,6 @@
 				0E78A6AB1CB3B92800E9F30F /* openaneIAPStore.m */,
 			);
 			path = "iapstore-ios";
-			sourceTree = "<group>";
-		};
-		0E78A6B31CB3B96200E9F30F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E78A6B71CB3B96300E9F30F /* libopenane.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		0E78A6BB1CB3B98900E9F30F /* Frameworks */ = {
@@ -105,7 +105,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0E5C64EC1CBB72AF002776E1 /* PBXTargetDependency */,
+				0E67758A1CBB9072009129DD /* PBXTargetDependency */,
 			);
 			name = iapstore;
 			productName = "iapstore-ios";
@@ -138,8 +138,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0E78A6B31CB3B96200E9F30F /* Products */;
-					ProjectRef = 0E78A6B21CB3B96200E9F30F /* openane.xcodeproj */;
+					ProductGroup = 0E6775841CBB906C009129DD /* Products */;
+					ProjectRef = 0E6775831CBB906C009129DD /* openane.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -150,11 +150,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0E78A6B71CB3B96300E9F30F /* libopenane.a */ = {
+		0E6775881CBB906C009129DD /* libopenane.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libopenane.a;
-			remoteRef = 0E78A6B61CB3B96300E9F30F /* PBXContainerItemProxy */;
+			remoteRef = 0E6775871CBB906C009129DD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -187,10 +187,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E5C64EC1CBB72AF002776E1 /* PBXTargetDependency */ = {
+		0E67758A1CBB9072009129DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = openane;
-			targetProxy = 0E5C64EB1CBB72AF002776E1 /* PBXContainerItemProxy */;
+			targetProxy = 0E6775891CBB9072009129DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -280,7 +280,7 @@
 		0E78A6B01CB3B92800E9F30F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = ../../openane/openane;
+				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -290,7 +290,7 @@
 		0E78A6B11CB3B92800E9F30F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = ../../openane/openane;
+				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

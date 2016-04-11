@@ -15,18 +15,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E5C64FB1CBB786E002776E1 /* PBXContainerItemProxy */ = {
+		0E67759C1CBB90E3009129DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-		0E5C71D91CACFF0D0014BDC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */;
+			containerPortal = 0E6775981CBB90E3009129DD /* openane.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0E5C71C01CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
+		0E67759E1CBB90EC009129DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6775981CBB90E3009129DD /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
@@ -42,7 +42,7 @@
 		0E5C71AB1CAC11780014BDC3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0E5C71AD1CAC117D0014BDC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0E5C71B01CAC13EE0014BDC3 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = ../../openane/openane.xcodeproj; sourceTree = "<group>"; };
+		0E6775981CBB90E3009129DD /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = "../../openane/openane-ios/openane.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 		0E5C71881CABCDB20014BDC3 = {
 			isa = PBXGroup;
 			children = (
-				0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */,
+				0E6775981CBB90E3009129DD /* openane.xcodeproj */,
 				0E5C719D1CABCEFC0014BDC3 /* wechat-sdk */,
 				0E5C71931CABCDB20014BDC3 /* wechat-ios */,
 				0E5C71AA1CAC11520014BDC3 /* Frameworks */,
@@ -109,10 +109,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0E5C71D61CACFF0D0014BDC3 /* Products */ = {
+		0E6775991CBB90E3009129DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E5C71DA1CACFF0D0014BDC3 /* libopenane.a */,
+				0E67759D1CBB90E3009129DD /* libopenane.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,7 +131,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0E5C64FC1CBB786E002776E1 /* PBXTargetDependency */,
+				0E67759F1CBB90EC009129DD /* PBXTargetDependency */,
 			);
 			name = wechat;
 			productName = "wechat-ios";
@@ -164,8 +164,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0E5C71D61CACFF0D0014BDC3 /* Products */;
-					ProjectRef = 0E5C71D51CACFF0D0014BDC3 /* openane.xcodeproj */;
+					ProductGroup = 0E6775991CBB90E3009129DD /* Products */;
+					ProjectRef = 0E6775981CBB90E3009129DD /* openane.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -176,11 +176,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0E5C71DA1CACFF0D0014BDC3 /* libopenane.a */ = {
+		0E67759D1CBB90E3009129DD /* libopenane.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libopenane.a;
-			remoteRef = 0E5C71D91CACFF0D0014BDC3 /* PBXContainerItemProxy */;
+			remoteRef = 0E67759C1CBB90E3009129DD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -213,10 +213,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E5C64FC1CBB786E002776E1 /* PBXTargetDependency */ = {
+		0E67759F1CBB90EC009129DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = openane;
-			targetProxy = 0E5C64FB1CBB786E002776E1 /* PBXContainerItemProxy */;
+			targetProxy = 0E67759E1CBB90EC009129DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -307,7 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				HEADER_SEARCH_PATHS = ../../openane/openane;
+				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/wechat-sdk",
@@ -322,7 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				HEADER_SEARCH_PATHS = ../../openane/openane;
+				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/wechat-sdk",

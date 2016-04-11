@@ -18,25 +18,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0E5C65001CBB78C0002776E1 /* PBXContainerItemProxy */ = {
+		0E67756D1CBB8F2F009129DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-		0E5C71DF1CAD01010014BDC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */;
+			containerPortal = 0E6775691CBB8F2F009129DD /* openane.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0E5C71C01CACF54B0014BDC3;
+			remoteInfo = openane;
+		};
+		0E67756F1CBB8F4C009129DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E6775691CBB8F2F009129DD /* openane.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
 			remoteInfo = openane;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = ../../openane/openane.xcodeproj; sourceTree = "<group>"; };
 		0E5C71D21CACF6690014BDC3 /* libopenane.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenane.a; path = "../../openane/build/Debug-iphoneos/libopenane.a"; sourceTree = "<group>"; };
+		0E6775691CBB8F2F009129DD /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = "../../openane/openane-ios/openane.xcodeproj"; sourceTree = "<group>"; };
 		0E9481871CA38BF500ADEDE9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0E9481901CA39B6700ADEDE9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0E9481921CA39B7400ADEDE9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -83,10 +83,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E5C71DC1CAD01010014BDC3 /* Products */ = {
+		0E67756A1CBB8F2F009129DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E5C71E01CAD01010014BDC3 /* libopenane.a */,
+				0E67756E1CBB8F2F009129DD /* libopenane.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,7 +112,7 @@
 		0EB6A16E1CA28D0800777938 = {
 			isa = PBXGroup;
 			children = (
-				0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */,
+				0E6775691CBB8F2F009129DD /* openane.xcodeproj */,
 				0EB6A1831CA28E9800777938 /* libWeiboSDK */,
 				0EB6A1791CA28D0800777938 /* weibo-ios */,
 				0E9481861CA38BD100ADEDE9 /* Frameworks */,
@@ -171,7 +171,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0E5C65011CBB78C0002776E1 /* PBXTargetDependency */,
+				0E6775701CBB8F4C009129DD /* PBXTargetDependency */,
 			);
 			name = weibo;
 			productName = "weibo-ios";
@@ -205,8 +205,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0E5C71DC1CAD01010014BDC3 /* Products */;
-					ProjectRef = 0E5C71CC1CACF5C30014BDC3 /* openane.xcodeproj */;
+					ProductGroup = 0E67756A1CBB8F2F009129DD /* Products */;
+					ProjectRef = 0E6775691CBB8F2F009129DD /* openane.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -217,11 +217,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0E5C71E01CAD01010014BDC3 /* libopenane.a */ = {
+		0E67756E1CBB8F2F009129DD /* libopenane.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libopenane.a;
-			remoteRef = 0E5C71DF1CAD01010014BDC3 /* PBXContainerItemProxy */;
+			remoteRef = 0E67756D1CBB8F2F009129DD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -254,10 +254,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E5C65011CBB78C0002776E1 /* PBXTargetDependency */ = {
+		0E6775701CBB8F4C009129DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = openane;
-			targetProxy = 0E5C65001CBB78C0002776E1 /* PBXContainerItemProxy */;
+			targetProxy = 0E67756F1CBB8F4C009129DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -347,7 +347,7 @@
 		0EB6A1811CA28D0800777938 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = ../../openane/openane;
+				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libWeiboSDK",
@@ -361,7 +361,7 @@
 		0EB6A1821CA28D0800777938 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = ../../openane/openane;
+				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libWeiboSDK",
