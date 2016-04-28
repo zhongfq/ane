@@ -43,7 +43,7 @@ public class TencentWebAuthActivity extends Activity {
         String url = "https://openmobile.qq.com/oauth2.0/m_authorize" +
                 "?status_userip=" + getIntent().getStringExtra("scope") +
                 "&scope=" +
-                "&redirect_uri=tencent%3A%2F%2Ftauth.qq.com%2F" +
+                "&redirect_uri=openanetencent%3A%2F%2Ftauth.qq.com%2F" +
                 "&response_type=token" +
                 "&client_id=" + getIntent().getStringExtra("appid");
 
@@ -60,7 +60,7 @@ public class TencentWebAuthActivity extends Activity {
                     result.putExtra("openid", extract(url, "openid="));
                 }
 
-                if (url.startsWith("tencent://")) {
+                if (url.startsWith("openanetencent://")) {
                     if (url.contains("access_token=") && url.contains("expires_in")) {
                         result.putExtra("access_token", extract(url, "access_token="));
                         result.putExtra("expires_in", extract(url, "expires_in="));
