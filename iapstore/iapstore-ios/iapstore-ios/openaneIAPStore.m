@@ -284,7 +284,6 @@ ANE_FUNCTION(openaneIAPStoreFuncFinishTransaction)
         FREPrint([msg UTF8String]);
         for (SKPaymentTransaction *t in [SKPaymentQueue defaultQueue].transactions)
         {
-            FREPrint([t.transactionIdentifier UTF8String]);
             if ([t.transactionIdentifier isEqualToString:tid])
             {
                 [[SKPaymentQueue defaultQueue] finishTransaction:t];
@@ -318,16 +317,10 @@ ANE_FUNCTION(openaneIAPStoreFuncPendingTransactions)
             }
         }
         
-        if (transactions.count > 0)
-        {
-            NSString *str = openaneTransactionsToString(transactions);
-            FREObject value = nil;
-            FRENewObjectFromUTF8((uint32_t)str.length, FRESTR([str UTF8String]), &value);
-            return value;
-        }
-        else
-        {
-            return nil;
-        }
+        NSString *str = openaneTransactionsToString(transactions);
+        const char *json = [str UTF8String];
+        FREObject value = nil;
+        FRENewObjectFromUTF8((uint32_t)strlen(json), FRESTR(json), &value);
+        return value;
     }
 }
