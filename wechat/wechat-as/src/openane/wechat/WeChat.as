@@ -111,7 +111,7 @@ public class WeChat extends EventDispatcher {
     public function authorize(scope:String = WeChatAuthScope.SNAAPI_USERINFO,
                               state:String = null):void {
         if (_context) {
-            _context.call("authorize", scope, state);
+            _context.call("authorize", scope || WeChatAuthScope.SNAAPI_USERINFO, state || "");
         }
     }
 
