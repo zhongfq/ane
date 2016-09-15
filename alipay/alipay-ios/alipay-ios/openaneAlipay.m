@@ -7,54 +7,49 @@
 #import "DataVerifier.h"
 #import <AlipaySDK/AlipaySDK.h>
 
+#define ANE_FUNCTION(f) static FREObject (f)(FREContext ctx, void *data, uint32_t argc, FREObject argv[])
+#define MAP_FUNCTION(fn, f, data) {(const uint8_t *)(fn), (data), &(f)}
+#define FRESTR(s) ((const uint8_t *)(s))
+
+#define FREPrint(s) FREDispatchStatusEventAsync(ctx, FRESTR("print"), FRESTR(s))
+#define UNUSED(e) (void)(e)
+
 @implementation AlipayConnector
+
+- (id)initWithContext:(FREContext)ctx
+{
+    if ((self = [super init]) != nil)
+    {
+        _context = ctx;
+    }
+    
+    return self;
+}
 
 @end
 
-void openaneAlipayInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
+static NSString *openaneObjectToString(FREObject obj)
 {
-    *extDataToSet = nil;
-    *ctxInitializerToSet = &openaneAlipayContextInitializer;
-    *ctxFinalizerToSet = &openaneAlipayContextFinalizer;
-}
-
-void openaneAlipayFinalizer(void *extData)
-{
+    const uint8_t *value = nil;
+    uint32_t len = 0;
     
-}
-
-void openaneAlipayContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
-{
-    @autoreleasepool {
-        static FRENamedFunction funcs[] =
-        {
-            MAP_FUNCTION("init", openaneAlipayFuncInit, nil),
-            MAP_FUNCTION("pay", openaneAlipayFuncPay, nil),
-            MAP_FUNCTION("payWithSignedInfo", openaneAlipayFuncPayWithSignedInfo, nil),
-            MAP_FUNCTION("handleOpenURL", openaneAlipayFuncHandleOpenURL, nil),
-        };
-        
-        *numFunctionsToSet = sizeof(funcs) / sizeof(FRENamedFunction);
-        *functionsToSet = funcs;
-        
-        AlipayConnector *connector = [[AlipayConnector alloc] initWithContext:ctx];
-        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
+    if (FREGetObjectAsUTF8(obj, &len, &value) == FRE_OK)
+    {
+        return [NSString stringWithUTF8String:(const char *)value];
+    }
+    else
+    {
+        return nil;
     }
 }
 
-void openaneAlipayContextFinalizer(FREContext ctx)
+static NSString *openaneObjectToJSONString(NSObject *obj)
 {
-    @autoreleasepool {
-        AlipayConnector *connector = openaneAlipayContextNativeData(ctx);
-        if (connector != nil)
-        {
-            CFBridgingRelease((__bridge CFTypeRef)connector);
-            FRESetContextNativeData(ctx, nil);
-        }
-    }
+    NSData *data = [NSJSONSerialization dataWithJSONObject:obj options:0 error:nil];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
-AlipayConnector* openaneAlipayContextNativeData(FREContext ctx)
+static AlipayConnector* openaneAlipayContextNativeData(FREContext ctx)
 {
     void *prt = nil;
     if (FREGetContextNativeData(ctx, &prt) == FRE_OK)
@@ -211,4 +206,47 @@ ANE_FUNCTION(openaneAlipayFuncHandleOpenURL)
         }
         return nil;
     }
+}
+
+static void openaneAlipayContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
+{
+    @autoreleasepool {
+        static FRENamedFunction funcs[] =
+        {
+            MAP_FUNCTION("init", openaneAlipayFuncInit, nil),
+            MAP_FUNCTION("pay", openaneAlipayFuncPay, nil),
+            MAP_FUNCTION("payWithSignedInfo", openaneAlipayFuncPayWithSignedInfo, nil),
+            MAP_FUNCTION("handleOpenURL", openaneAlipayFuncHandleOpenURL, nil),
+        };
+        
+        *numFunctionsToSet = sizeof(funcs) / sizeof(FRENamedFunction);
+        *functionsToSet = funcs;
+        
+        AlipayConnector *connector = [[AlipayConnector alloc] initWithContext:ctx];
+        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
+    }
+}
+
+static void openaneAlipayContextFinalizer(FREContext ctx)
+{
+    @autoreleasepool {
+        AlipayConnector *connector = openaneAlipayContextNativeData(ctx);
+        if (connector != nil)
+        {
+            CFBridgingRelease((__bridge CFTypeRef)connector);
+            FRESetContextNativeData(ctx, nil);
+        }
+    }
+}
+
+void openaneAlipayInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
+{
+    *extDataToSet = nil;
+    *ctxInitializerToSet = &openaneAlipayContextInitializer;
+    *ctxFinalizerToSet = &openaneAlipayContextFinalizer;
+}
+
+void openaneAlipayFinalizer(void *extData)
+{
+    
 }

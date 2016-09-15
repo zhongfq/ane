@@ -1,5 +1,5 @@
 <extension xmlns="http://ns.adobe.com/air/extension/20.0">
-	<id>openane.wechat.WeChat</id>
+	<id>openane.WeChat</id>
 	<versionNumber>1</versionNumber>
 	<platforms>
 		<platform name="Android-ARM">

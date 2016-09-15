@@ -19,10 +19,10 @@ public class Tencent extends EventDispatcher {
     private static const STATUS_CODE_CANCEL:int = -1;
     private static const STATUS_CODE_FAIL:int = -2;
 
-    private static var _defaultInstance:Tencent;
+    private static var _tencent:Tencent;
 
-    public static function get defaultInstance():Tencent {
-        return _defaultInstance ||= new Tencent();
+    public static function get tencent():Tencent {
+        return _tencent ||= new Tencent();
     }
 
     private var _context:ExtensionContext;
@@ -31,12 +31,12 @@ public class Tencent extends EventDispatcher {
     private var _token:TencentAuthToken;
 
     public function Tencent() {
-        if (_defaultInstance) {
-            throw new Error(format("use %s.defaultInstance", getQualifiedClassName(Tencent)));
+        if (_tencent) {
+            throw new Error(format("use %s.tencent", getQualifiedClassName(Tencent)));
         }
 
         if (Capabilities.os.search(/Linux|iPhone/) >= 0) {
-            _context = ExtensionContext.createExtensionContext("openane.tencent.Tencent", "");
+            _context = ExtensionContext.createExtensionContext("openane.Tencent", "");
             _context.addEventListener(StatusEvent.STATUS, statusHandler);
             NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, invokeHandler);
         } else {

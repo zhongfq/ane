@@ -13,22 +13,22 @@ import flash.utils.getQualifiedClassName;
 [Event(name="purchaseFail", type="openane.alipay.AlipayEvent")]
 [Event(name="purchaseSignedInfoComplete", type="openane.alipay.AlipayEvent")]
 public class Alipay extends EventDispatcher {
-    private static var _defaultInstance:Alipay;
+    private static var _alipay:Alipay;
 
-    public static function get defaultInstance():Alipay {
-        return _defaultInstance ||= new Alipay();
+    public static function get alipay():Alipay {
+        return _alipay ||= new Alipay();
     }
 
     private var _context:ExtensionContext;
     private var _urlScheme:String;
 
     public function Alipay() {
-        if (_defaultInstance) {
-            throw new Error(format("use %s.defaultInstance", getQualifiedClassName(Alipay)));
+        if (_alipay) {
+            throw new Error(format("use %s.alipay", getQualifiedClassName(Alipay)));
         }
 
         if (Capabilities.os.search(/Linux|iPhone/) >= 0) {
-            _context = ExtensionContext.createExtensionContext("openane.alipay.Alipay", "");
+            _context = ExtensionContext.createExtensionContext("openane.Alipay", "");
             _context.addEventListener(StatusEvent.STATUS, statusHandler);
             NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, invokeHandler);
         } else {

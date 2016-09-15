@@ -16,21 +16,21 @@ import flash.utils.getQualifiedClassName;
 [Event(name="productDetailsInvalid", type="openane.iapstore.IAPStoreProductEvent")]
 [Event(name="productDetailsFail", type="openane.iapstore.IAPStoreProductEvent")]
 public class IAPStore extends EventDispatcher {
-    private static var _defaultInstance:IAPStore;
+    private static var _iapStore:IAPStore;
 
-    public static function get defaultInstance():IAPStore {
-        return _defaultInstance ||= new IAPStore();
+    public static function get iapStore():IAPStore {
+        return _iapStore ||= new IAPStore();
     }
 
     private var _context:ExtensionContext;
 
     public function IAPStore() {
-        if (_defaultInstance) {
-            throw new Error(format("use %s.defaultInstance", getQualifiedClassName(IAPStore)));
+        if (_iapStore) {
+            throw new Error(format("use %s.iapStore", getQualifiedClassName(IAPStore)));
         }
 
         if (Capabilities.os.search(/iPhone/) >= 0) {
-            _context = ExtensionContext.createExtensionContext("openane.iapstore.IAPStore", "");
+            _context = ExtensionContext.createExtensionContext("openane.IAPStore", "");
             _context.addEventListener(StatusEvent.STATUS, statusHandler);
         }
     }

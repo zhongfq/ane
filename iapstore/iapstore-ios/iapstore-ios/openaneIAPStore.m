@@ -4,7 +4,122 @@
 
 #import "openaneIAPStore.h"
 
+#define ANE_FUNCTION(f) static FREObject (f)(FREContext ctx, void *data, uint32_t argc, FREObject argv[])
+#define MAP_FUNCTION(fn, f, data) {(const uint8_t *)(fn), (data), &(f)}
+#define FRESTR(s) ((const uint8_t *)(s))
+
+#define FREPrint(s) FREDispatchStatusEventAsync(ctx, FRESTR("print"), FRESTR(s))
+#define UNUSED(e) (void)(e)
+
+
+static NSString *openaneObjectToString(FREObject obj)
+{
+    const uint8_t *value = nil;
+    uint32_t len = 0;
+    
+    if (FREGetObjectAsUTF8(obj, &len, &value) == FRE_OK)
+    {
+        return [NSString stringWithUTF8String:(const char *)value];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+static NSNumber *openaneObjectToNumber(FREObject obj)
+{
+    double value = 0;
+    
+    if (FREGetObjectAsDouble(obj, &value) == FRE_OK)
+    {
+        return [NSNumber numberWithDouble:value];
+    }
+    else
+    {
+        NSString *numstr = openaneObjectToString(obj);
+        return [NSNumber numberWithDouble:numstr != NULL ? [numstr doubleValue] : 0];
+    }
+}
+
+static NSString *openaneObjectToJSONString(NSObject *obj)
+{
+    NSData *data = [NSJSONSerialization dataWithJSONObject:obj options:0 error:nil];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
+static NSDictionary *openaneTransactionToDictionary(SKPaymentTransaction *transaction)
+{
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:transaction.payment.productIdentifier forKey:@"productIdentifier"];
+    [dict setValue:[NSNumber numberWithInteger:transaction.payment.quantity] forKey:@"productQuantity"];
+    [dict setValue:transaction.transactionIdentifier forKey:@"identifier"];
+    
+    if (transaction.transactionState == SKPaymentTransactionStatePurchased ||
+        transaction.transactionState == SKPaymentTransactionStateRestored)
+    {
+        [dict setValue:[NSNumber numberWithDouble:transaction.transactionDate.timeIntervalSince1970] forKey:@"date"];
+        [dict setValue:[[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSASCIIStringEncoding] forKey:@"receipt"];
+    }
+    
+    if(transaction.transactionState == SKPaymentTransactionStateFailed)
+    {
+        NSString *error = [[transaction.error localizedDescription] stringByAppendingFormat:@":%ld", (long)transaction.error.code];
+        [dict setValue:error forKey:@"error"];
+    }
+    
+    if(transaction.transactionState == SKPaymentTransactionStateRestored &&
+       transaction.originalTransaction.transactionState != SKPaymentTransactionStatePurchasing)
+    {
+        [dict setValue:openaneTransactionToDictionary(transaction.originalTransaction) forKey:@"originalTransaction"];
+    }
+    
+    return dict;
+}
+
+
+static NSString *openaneTransactionsToString(NSArray<SKPaymentTransaction *> *transactions)
+{
+    NSMutableArray<NSDictionary *> *values = [[NSMutableArray alloc] init];
+    
+    for (SKPaymentTransaction *t in transactions)
+    {
+        [values addObject:openaneTransactionToDictionary(t)];
+    }
+    
+    return openaneObjectToJSONString(values);
+}
+
+static NSString *openaneProductsToString(NSArray<SKProduct *> *products)
+{
+    NSMutableArray<NSDictionary *> *values = [[NSMutableArray alloc] init];
+    
+    for (SKProduct *p in products)
+    {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setValue:p.localizedTitle forKey:@"title"];
+        [dict setValue:p.localizedDescription forKey:@"description"];
+        [dict setValue:p.productIdentifier forKey:@"identifier"];
+        [dict setValue:p.priceLocale.localeIdentifier forKey:@"priceLocale"];
+        [dict setValue:p.price forKey:@"price"];
+        [values addObject:dict];
+    }
+    
+    return openaneObjectToJSONString(values);
+}
+
 @implementation IAPStoreConnector
+
+- (id)initWithContext:(FREContext)ctx
+{
+    if ((self = [super init]) != nil)
+    {
+        _context = ctx;
+    }
+    
+    return self;
+}
+
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray<SKPaymentTransaction *> *)transactions
 {
@@ -90,53 +205,7 @@
 
 @end
 
-void openaneIAPStoreInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
-{
-    *extDataToSet = nil;
-    *ctxInitializerToSet = &openaneIAPStoreContextInitializer;
-    *ctxFinalizerToSet = &openaneIAPStoreContextFinalizer;
-}
-
-void openaneIAPStoreFinalizer(void *extData)
-{
-}
-
-void openaneIAPStoreContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
-{
-    @autoreleasepool {
-        static FRENamedFunction funcs[] =
-        {
-            MAP_FUNCTION("canMakePayments", openaneIAPStoreFuncCanMakePayments, nil),
-            MAP_FUNCTION("requestProducts", openaneIAPStoreFuncRequestProducts, nil),
-            MAP_FUNCTION("purchase", openaneIAPStoreFuncPurchase, nil),
-            MAP_FUNCTION("finishTransaction", openaneIAPStoreFuncFinishTransaction, nil),
-            MAP_FUNCTION("restoreCompletedTransactions", openaneIAPStoreFuncRestoreCompletedTransactions, nil),
-            MAP_FUNCTION("pendingTransactions", openaneIAPStoreFuncPendingTransactions, nil),
-        };
-        
-        *numFunctionsToSet = sizeof(funcs) / sizeof(FRENamedFunction);
-        *functionsToSet = funcs;
-        
-        IAPStoreConnector *connector = [[IAPStoreConnector alloc] initWithContext:ctx];
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:connector];
-        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
-    }
-}
-
-void openaneIAPStoreContextFinalizer(FREContext ctx)
-{
-    @autoreleasepool {
-        IAPStoreConnector* connector = openaneIAPStoreContextNativeData(ctx);
-        if (connector != nil)
-        {
-            [[SKPaymentQueue defaultQueue] removeTransactionObserver:connector];
-            CFBridgingRelease((__bridge CFTypeRef)connector);
-            FRESetContextNativeData(ctx, nil);
-        }
-    }
-}
-
-IAPStoreConnector *openaneIAPStoreContextNativeData(FREContext ctx)
+static IAPStoreConnector *openaneIAPStoreContextNativeData(FREContext ctx)
 {
     void *ptr = nil;
     if (FREGetContextNativeData(ctx, &ptr) == FRE_OK)
@@ -148,65 +217,6 @@ IAPStoreConnector *openaneIAPStoreContextNativeData(FREContext ctx)
         FREPrint("native data is nil");
         return nil;
     }
-}
-
-NSDictionary *openaneTransactionToDictionary(SKPaymentTransaction *transaction)
-{
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:transaction.payment.productIdentifier forKey:@"productIdentifier"];
-    [dict setValue:[NSNumber numberWithInteger:transaction.payment.quantity] forKey:@"productQuantity"];
-    [dict setValue:transaction.transactionIdentifier forKey:@"identifier"];
-    
-    if (transaction.transactionState == SKPaymentTransactionStatePurchased ||
-        transaction.transactionState == SKPaymentTransactionStateRestored)
-    {
-        [dict setValue:[NSNumber numberWithDouble:transaction.transactionDate.timeIntervalSince1970] forKey:@"date"];
-        [dict setValue:[[NSString alloc] initWithData:transaction.transactionReceipt encoding:NSASCIIStringEncoding] forKey:@"receipt"];
-    }
-    
-    if(transaction.transactionState == SKPaymentTransactionStateFailed)
-    {
-        NSString *error = [[transaction.error localizedDescription] stringByAppendingFormat:@":%ld", (long)transaction.error.code];
-        [dict setValue:error forKey:@"error"];
-    }
-    
-    if(transaction.transactionState == SKPaymentTransactionStateRestored &&
-       transaction.originalTransaction.transactionState != SKPaymentTransactionStatePurchasing)
-    {
-        [dict setValue:openaneTransactionToDictionary(transaction.originalTransaction) forKey:@"originalTransaction"];
-    }
-    
-    return dict;
-}
-
-NSString *openaneTransactionsToString(NSArray<SKPaymentTransaction *> *transactions)
-{
-    NSMutableArray<NSDictionary *> *values = [[NSMutableArray alloc] init];
-    
-    for (SKPaymentTransaction *t in transactions)
-    {
-        [values addObject:openaneTransactionToDictionary(t)];
-    }
-    
-    return openaneObjectToJSONString(values);
-}
-
-NSString *openaneProductsToString(NSArray<SKProduct *> *products)
-{
-    NSMutableArray<NSDictionary *> *values = [[NSMutableArray alloc] init];
-    
-    for (SKProduct *p in products)
-    {
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        [dict setValue:p.localizedTitle forKey:@"title"];
-        [dict setValue:p.localizedDescription forKey:@"description"];
-        [dict setValue:p.productIdentifier forKey:@"identifier"];
-        [dict setValue:p.priceLocale.localeIdentifier forKey:@"priceLocale"];
-        [dict setValue:p.price forKey:@"price"];
-        [values addObject:dict];
-    }
-    
-    return openaneObjectToJSONString(values);
 }
 
 ANE_FUNCTION(openaneIAPStoreFuncCanMakePayments)
@@ -228,7 +238,7 @@ ANE_FUNCTION(openaneIAPStoreFuncRequestProducts)
         SKProductsRequest *req = [[SKProductsRequest alloc] initWithProductIdentifiers:ids];
         req.delegate = connector;
         [req start];
-
+        
         NSString *msg = [NSString stringWithFormat:@"request products: %@", idsstr];
         FREPrint([msg UTF8String]);
         return nil;
@@ -323,4 +333,50 @@ ANE_FUNCTION(openaneIAPStoreFuncPendingTransactions)
         FRENewObjectFromUTF8((uint32_t)strlen(json), FRESTR(json), &value);
         return value;
     }
+}
+
+static void openaneIAPStoreContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
+{
+    @autoreleasepool {
+        static FRENamedFunction funcs[] =
+        {
+            MAP_FUNCTION("canMakePayments", openaneIAPStoreFuncCanMakePayments, nil),
+            MAP_FUNCTION("requestProducts", openaneIAPStoreFuncRequestProducts, nil),
+            MAP_FUNCTION("purchase", openaneIAPStoreFuncPurchase, nil),
+            MAP_FUNCTION("finishTransaction", openaneIAPStoreFuncFinishTransaction, nil),
+            MAP_FUNCTION("restoreCompletedTransactions", openaneIAPStoreFuncRestoreCompletedTransactions, nil),
+            MAP_FUNCTION("pendingTransactions", openaneIAPStoreFuncPendingTransactions, nil),
+        };
+        
+        *numFunctionsToSet = sizeof(funcs) / sizeof(FRENamedFunction);
+        *functionsToSet = funcs;
+        
+        IAPStoreConnector *connector = [[IAPStoreConnector alloc] initWithContext:ctx];
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:connector];
+        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
+    }
+}
+
+static void openaneIAPStoreContextFinalizer(FREContext ctx)
+{
+    @autoreleasepool {
+        IAPStoreConnector* connector = openaneIAPStoreContextNativeData(ctx);
+        if (connector != nil)
+        {
+            [[SKPaymentQueue defaultQueue] removeTransactionObserver:connector];
+            CFBridgingRelease((__bridge CFTypeRef)connector);
+            FRESetContextNativeData(ctx, nil);
+        }
+    }
+}
+
+void openaneIAPStoreInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
+{
+    *extDataToSet = nil;
+    *ctxInitializerToSet = &openaneIAPStoreContextInitializer;
+    *ctxFinalizerToSet = &openaneIAPStoreContextFinalizer;
+}
+
+void openaneIAPStoreFinalizer(void *extData)
+{
 }

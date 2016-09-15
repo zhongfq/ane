@@ -2,7 +2,6 @@ package openane.wechat;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREObject;
@@ -12,7 +11,7 @@ import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import openane.openane.OpenaneUtil;
+import openane.wechat.core.OpenaneUtil;
 import org.json.JSONObject;
 
 public class WeChatFuncAuthorize implements FREFunction {

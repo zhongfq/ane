@@ -5,7 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/alipay/alipay-android/alipay-android.iml" filepath="$PROJECT_DIR$/alipay/alipay-android/alipay-android.iml" group="alipay" />
       <module fileurl="file://$PROJECT_DIR$/alipay/alipay-as/alipay-as.iml" filepath="$PROJECT_DIR$/alipay/alipay-as/alipay-as.iml" group="alipay" />
       <module fileurl="file://$PROJECT_DIR$/iapstore/iapstore-as/iapstore-as.iml" filepath="$PROJECT_DIR$/iapstore/iapstore-as/iapstore-as.iml" group="iapstore" />
-      <module fileurl="file://$PROJECT_DIR$/openane/openane-android/openane-android.iml" filepath="$PROJECT_DIR$/openane/openane-android/openane-android.iml" group="openane" />
+      <module fileurl="file://$PROJECT_DIR$/lame/lame-android/lame-android.iml" filepath="$PROJECT_DIR$/lame/lame-android/lame-android.iml" group="lame" />
+      <module fileurl="file://$PROJECT_DIR$/lame/lame-as/lame-as.iml" filepath="$PROJECT_DIR$/lame/lame-as/lame-as.iml" group="lame" />
+      <module fileurl="file://$PROJECT_DIR$/nativecontext/nativecontext-android/nativecontext-android.iml" filepath="$PROJECT_DIR$/nativecontext/nativecontext-android/nativecontext-android.iml" group="nativecontext" />
+      <module fileurl="file://$PROJECT_DIR$/nativecontext/nativecontext-as/nativecontext-as.iml" filepath="$PROJECT_DIR$/nativecontext/nativecontext-as/nativecontext-as.iml" group="nativecontext" />
       <module fileurl="file://$PROJECT_DIR$/tencent/tencent-android/tencent-android.iml" filepath="$PROJECT_DIR$/tencent/tencent-android/tencent-android.iml" group="tencent" />
       <module fileurl="file://$PROJECT_DIR$/tencent/tencent-as/tencent-as.iml" filepath="$PROJECT_DIR$/tencent/tencent-as/tencent-as.iml" group="tencent" />
       <module fileurl="file://$PROJECT_DIR$/wechat/wechat-android/wechat-android.iml" filepath="$PROJECT_DIR$/wechat/wechat-android/wechat-android.iml" group="wechat" />

@@ -5,6 +5,5 @@
     </linkerOptions>
     <packagedDependencies>
         <packagedDependency>TencentOpenAPI.framework</packagedDependency>
-        <packagedDependency>libopenane.a</packagedDependency>
     </packagedDependencies>
 </platform>

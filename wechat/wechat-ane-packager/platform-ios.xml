@@ -7,6 +7,5 @@
         <option>-framework CoreTelephony</option>
     </linkerOptions>
     <packagedDependencies>
-        <packagedDependency>libopenane.a</packagedDependency>
     </packagedDependencies>
 </platform>

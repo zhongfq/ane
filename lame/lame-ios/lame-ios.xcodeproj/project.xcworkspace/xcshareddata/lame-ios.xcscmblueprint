@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0fb115ec-082a-11e6-be5d-d3d725a758c6++3727",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "0fb115ec-082a-11e6-be5d-d3d725a758c6++3727" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0fb115ec-082a-11e6-be5d-d3d725a758c6++3727" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C8FA9D33-4AFB-46F2-82F7-E2E89E5222E1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0fb115ec-082a-11e6-be5d-d3d725a758c6++3727" : "code\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "lame-ios",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "open-as3\/openane\/lame\/lame-ios\/lame-ios.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.0.114\/ttsz",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0fb115ec-082a-11e6-be5d-d3d725a758c6++3727"
+    }
+  ]
+}

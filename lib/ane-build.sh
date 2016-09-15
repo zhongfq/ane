@@ -6,9 +6,10 @@ pushd `dirname $2`
 MODULE=$4
 ANE=$6
 JAR=$8
-PROJECT_DIR=../..
+PROJECT_DIR=`realpath ../..`
 PRODUCT_DIR=$PROJECT_DIR/bin
 BUILD_DIR=$PROJECT_DIR/build/production/${MODULE}-ane
+AIR_SDK_HOME=~/Developer/air-sdk-20
 
 echo "start build: $MODULE"
 
@@ -43,7 +44,7 @@ AS_SWC=${MODULE}.swc
 
 echo "compile as"
 find $AS_SRC -name "*.as" | sed "s:$AS_SRC/:  [SWC] <= :"
-$AIR_SDK_HOME/bin/acompc -include-sources $AS_SRC -output $BUILD_DIR/$AS_SWC > /dev/null
+$AIR_SDK_HOME/bin/acompc -swf-version 30 -include-sources $AS_SRC -output $BUILD_DIR/$AS_SWC > /dev/null
 
 # 解压library.swf
 tar -C $BUILD_DIR/default/ -xzf $BUILD_DIR/$AS_SWC library.swf
@@ -62,7 +63,6 @@ if [ ! "x$PLAT_ANDROID" = "x" ] ; then
     JAVA_LIBS=$PROJECT_DIR/lib/android/android.jar
     JAVA_LIBS=$JAVA_LIBS:$PROJECT_DIR/lib/air-runtime/FlashRuntimeExtensions.jar
     JAVA_LIBS=$JAVA_LIBS:$PROJECT_DIR/lib/air-runtime/runtimeClasses.jar
-    JAVA_LIBS=$JAVA_LIBS:$PROJECT_DIR/lib/openane.jar
 
     for file in `find $JAVA_LIB_DIR -name "*.jar"` ; do
         JAVA_LIBS=$JAVA_LIBS:$file
@@ -84,14 +84,14 @@ if [ ! "x$PLAT_ANDROID" = "x" ] ; then
     find $JAVA_BUILD_DIR -name "*.java" | xargs rm -rf
     jar -cf $BUILD_DIR/Android-ARM/lib${MODULE}.jar -C $JAVA_BUILD_DIR .
 
-    cp ${JAVA_LIB_DIR}/$JAR $BUILD_DIR/Android-ARM/$JAR
-    cp $PROJECT_DIR/lib/openane.jar $BUILD_DIR/Android-ARM/openane.jar
-
-    # 如果有assets资源则解压到输出目录
-    ASSETS=`tar -tf $BUILD_DIR/Android-ARM/$JAR | grep '^assets'`
-    if [ "x$ASSETS" != "x" ] ; then
-        rm -rf $PRODUCT_DIR/openane-${MODULE} && mkdir $PRODUCT_DIR/openane-${MODULE}
-        tar -C $PRODUCT_DIR/openane-${MODULE} -xf $JAVA_LIB_DIR/$JAR $ASSETS
+    if [ "x$JAR" != "x" ] ; then
+        cp ${JAVA_LIB_DIR}/$JAR $BUILD_DIR/Android-ARM/$JAR
+        # 如果有assets资源则解压到输出目录
+        ASSETS=`tar -tf $BUILD_DIR/Android-ARM/$JAR | grep '^assets'`
+        if [ "x$ASSETS" != "x" ] ; then
+            rm -rf $PRODUCT_DIR/openane-${MODULE} && mkdir $PRODUCT_DIR/openane-${MODULE}
+            tar -C $PRODUCT_DIR/openane-${MODULE} -xf $JAVA_LIB_DIR/$JAR $ASSETS
+        fi
     fi
 fi
 

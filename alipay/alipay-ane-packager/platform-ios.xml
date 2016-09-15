@@ -7,6 +7,5 @@
     </linkerOptions>
     <packagedDependencies>
         <packagedDependency>AlipaySDK.framework</packagedDependency>
-        <packagedDependency>libopenane.a</packagedDependency>
     </packagedDependencies>
 </platform>

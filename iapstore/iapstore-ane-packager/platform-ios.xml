@@ -5,6 +5,5 @@
         <option>-framework StoreKit</option>
     </linkerOptions>
     <packagedDependencies>
-        <packagedDependency>libopenane.a</packagedDependency>
     </packagedDependencies>
 </platform>

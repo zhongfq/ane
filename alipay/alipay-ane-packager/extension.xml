@@ -1,5 +1,5 @@
 <extension xmlns="http://ns.adobe.com/air/extension/20.0">
-	<id>openane.alipay.Alipay</id>
+	<id>openane.Alipay</id>
 	<versionNumber>1</versionNumber>
 	<platforms>
 		<platform name="Android-ARM">

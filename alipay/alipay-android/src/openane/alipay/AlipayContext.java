@@ -2,7 +2,7 @@ package openane.alipay;
 
 import android.util.Log;
 import com.adobe.fre.FREFunction;
-import openane.openane.OpenaneContext;
+import openane.alipay.core.OpenaneContext;
 
 import java.util.HashMap;
 import java.util.Map;

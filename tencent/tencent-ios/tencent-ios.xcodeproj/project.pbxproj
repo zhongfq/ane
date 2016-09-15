@@ -11,30 +11,13 @@
 		0E5C720C1CAD05F10014BDC3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0E6775931CBB90AA009129DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E67758F1CBB90AA009129DD /* openane.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5C71C01CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-		0E6775951CBB90B3009129DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E67758F1CBB90AA009129DD /* openane.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0E5C71F31CAD03FC0014BDC3 /* libtencent.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libtencent.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5C71F61CAD03FC0014BDC3 /* openaneTencent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openaneTencent.h; sourceTree = "<group>"; };
 		0E5C71F81CAD03FC0014BDC3 /* openaneTencent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = openaneTencent.m; sourceTree = "<group>"; };
 		0E5C72081CAD05790014BDC3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		0E5C72091CAD05790014BDC3 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
-		0E67758F1CBB90AA009129DD /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = "../../openane/openane-ios/openane.xcodeproj"; sourceTree = "<group>"; };
+		0E728BC11D87A116005B7010 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +35,6 @@
 		0E5C71EA1CAD03FB0014BDC3 = {
 			isa = PBXGroup;
 			children = (
-				0E67758F1CBB90AA009129DD /* openane.xcodeproj */,
 				0E5C72071CAD05790014BDC3 /* libtencent */,
 				0E5C71F51CAD03FC0014BDC3 /* tencent-ios */,
 				0E5C71F41CAD03FC0014BDC3 /* Products */,
@@ -70,6 +52,7 @@
 		0E5C71F51CAD03FC0014BDC3 /* tencent-ios */ = {
 			isa = PBXGroup;
 			children = (
+				0E728BC11D87A116005B7010 /* FlashRuntimeExtensions.h */,
 				0E5C71F61CAD03FC0014BDC3 /* openaneTencent.h */,
 				0E5C71F81CAD03FC0014BDC3 /* openaneTencent.m */,
 			);
@@ -83,14 +66,6 @@
 				0E5C72091CAD05790014BDC3 /* TencentOpenApi_IOS_Bundle.bundle */,
 			);
 			path = libtencent;
-			sourceTree = "<group>";
-		};
-		0E6775901CBB90AA009129DD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E6775941CBB90AA009129DD /* libopenane.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,7 +82,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0E6775961CBB90B3009129DD /* PBXTargetDependency */,
 			);
 			name = tencent;
 			productName = "tencent-ios";
@@ -138,28 +112,12 @@
 			mainGroup = 0E5C71EA1CAD03FB0014BDC3;
 			productRefGroup = 0E5C71F41CAD03FC0014BDC3 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0E6775901CBB90AA009129DD /* Products */;
-					ProjectRef = 0E67758F1CBB90AA009129DD /* openane.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0E5C71F21CAD03FC0014BDC3 /* tencent */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0E6775941CBB90AA009129DD /* libopenane.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libopenane.a;
-			remoteRef = 0E6775931CBB90AA009129DD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		0E5C64F81CBB77CE002776E1 /* ShellScript */ = {
@@ -187,14 +145,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0E6775961CBB90B3009129DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = openane;
-			targetProxy = 0E6775951CBB90B3009129DD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0E5C71FA1CAD03FC0014BDC3 /* Debug */ = {
@@ -286,7 +236,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libtencent",
 				);
-				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
+				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -300,7 +250,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libtencent",
 				);
-				HEADER_SEARCH_PATHS = "../../openane/openane-ios/openane";
+				HEADER_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

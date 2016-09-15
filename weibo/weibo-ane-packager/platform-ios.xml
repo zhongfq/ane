@@ -14,6 +14,5 @@
         <option>-framework UIKit</option>
     </linkerOptions>
     <packagedDependencies>
-        <packagedDependency>libopenane.a</packagedDependency>
     </packagedDependencies>
 </platform>

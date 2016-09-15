@@ -32,10 +32,10 @@ public class WeChat extends EventDispatcher {
     /** 微信不支持 */
     private static const WXERRCODE_UNSUPPORT:int = -5;
 
-    private static var _defaultInstance:WeChat;
+    private static var _wechat:WeChat;
 
-    public static function get defaultInstance():WeChat {
-        return _defaultInstance ||= new WeChat();
+    public static function get wechat():WeChat {
+        return _wechat ||= new WeChat();
     }
 
     private var _context:ExtensionContext;
@@ -45,12 +45,12 @@ public class WeChat extends EventDispatcher {
     private var _urlScheme:String;
 
     public function WeChat() {
-        if (_defaultInstance) {
-            throw new Error(format("use %s.defaultInstance", getQualifiedClassName(WeChat)));
+        if (_wechat) {
+            throw new Error(format("use %s.wechat", getQualifiedClassName(WeChat)));
         }
 
         if (Capabilities.os.search(/Linux|iPhone/) >= 0) {
-            _context = ExtensionContext.createExtensionContext("openane.wechat.WeChat", "");
+            _context = ExtensionContext.createExtensionContext("openane.WeChat", "");
             _context.addEventListener(StatusEvent.STATUS, statusHandler);
             NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, invokeHandler);
         } else {

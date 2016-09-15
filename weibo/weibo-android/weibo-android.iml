@@ -30,7 +30,6 @@
         <jarDirectory url="file://$MODULE_DIR$/libs" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="openane-android" scope="PROVIDED" />
     <orderEntry type="library" scope="PROVIDED" name="air-runtime" level="project" />
   </component>
 </module>

@@ -8,7 +8,7 @@ import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
-import openane.openane.OpenaneContext;
+import openane.tencent.core.OpenaneContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 

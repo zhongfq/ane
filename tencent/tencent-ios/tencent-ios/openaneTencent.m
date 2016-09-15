@@ -4,7 +4,46 @@
 
 #import "openaneTencent.h"
 
+#define ANE_FUNCTION(f) static FREObject (f)(FREContext ctx, void *data, uint32_t argc, FREObject argv[])
+#define MAP_FUNCTION(fn, f, data) {(const uint8_t *)(fn), (data), &(f)}
+#define FRESTR(s) ((const uint8_t *)(s))
+
+#define FREPrint(s) FREDispatchStatusEventAsync(ctx, FRESTR("print"), FRESTR(s))
+#define UNUSED(e) (void)(e)
+
+
+static NSString *openaneObjectToString(FREObject obj)
+{
+    const uint8_t *value = nil;
+    uint32_t len = 0;
+    
+    if (FREGetObjectAsUTF8(obj, &len, &value) == FRE_OK)
+    {
+        return [NSString stringWithUTF8String:(const char *)value];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+static NSString *openaneObjectToJSONString(NSObject *obj)
+{
+    NSData *data = [NSJSONSerialization dataWithJSONObject:obj options:0 error:nil];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
 @implementation TencentConnector
+
+- (id)initWithContext:(FREContext)ctx
+{
+    if ((self = [super init]) != nil)
+    {
+        _context = ctx;
+    }
+    
+    return self;
+}
 
 - (void)tencentDidLogin
 {
@@ -49,48 +88,7 @@
 
 @end
 
-void openaneTencentInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
-{
-    *extDataToSet = NULL;
-    *ctxInitializerToSet = &openaneTencentContextInitializer;
-    *ctxFinalizerToSet = &openaneTencentContextFinalizer;
-}
-
-void openaneTencentFinalizer(void *extData)
-{
-    
-}
-
-void openaneTencentContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
-{
-    @autoreleasepool {
-        static FRENamedFunction func[] = {
-            MAP_FUNCTION("init", openaneTencentFuncInit, NULL),
-            MAP_FUNCTION("authorize", openaneTencentFuncAuthorize, NULL),
-            MAP_FUNCTION("handleOpenURL", openaneTencentFuncHandleOpenURL, NULL),
-        };
-        
-        *numFunctionsToSet = sizeof(func) / sizeof(FRENamedFunction);
-        *functionsToSet = func;
-        
-        TencentConnector *connector = [[TencentConnector alloc] initWithContext:ctx];
-        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
-    }
-}
-
-void openaneTencentContextFinalizer(FREContext ctx)
-{
-    @autoreleasepool {
-        TencentConnector *connector = openaneTencentContextNativeData(ctx);
-        if (connector != NULL)
-        {
-            CFBridgingRelease((__bridge CFTypeRef)connector);
-            FRESetContextNativeData(ctx, NULL);
-        }
-    }
-}
-
-TencentConnector *openaneTencentContextNativeData(FREContext ctx)
+static TencentConnector *openaneTencentContextNativeData(FREContext ctx)
 {
     void *ptr = NULL;
     if (FREGetContextNativeData(ctx, &ptr) == FRE_OK)
@@ -146,4 +144,45 @@ ANE_FUNCTION(openaneTencentFuncHandleOpenURL)
         [TencentOAuth HandleOpenURL:url];
         return NULL;
     }
+}
+
+static void openaneTencentContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
+{
+    @autoreleasepool {
+        static FRENamedFunction func[] = {
+            MAP_FUNCTION("init", openaneTencentFuncInit, NULL),
+            MAP_FUNCTION("authorize", openaneTencentFuncAuthorize, NULL),
+            MAP_FUNCTION("handleOpenURL", openaneTencentFuncHandleOpenURL, NULL),
+        };
+        
+        *numFunctionsToSet = sizeof(func) / sizeof(FRENamedFunction);
+        *functionsToSet = func;
+        
+        TencentConnector *connector = [[TencentConnector alloc] initWithContext:ctx];
+        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
+    }
+}
+
+static void openaneTencentContextFinalizer(FREContext ctx)
+{
+    @autoreleasepool {
+        TencentConnector *connector = openaneTencentContextNativeData(ctx);
+        if (connector != NULL)
+        {
+            CFBridgingRelease((__bridge CFTypeRef)connector);
+            FRESetContextNativeData(ctx, NULL);
+        }
+    }
+}
+
+void openaneTencentInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
+{
+    *extDataToSet = NULL;
+    *ctxInitializerToSet = &openaneTencentContextInitializer;
+    *ctxFinalizerToSet = &openaneTencentContextFinalizer;
+}
+
+void openaneTencentFinalizer(void *extData)
+{
+    
 }

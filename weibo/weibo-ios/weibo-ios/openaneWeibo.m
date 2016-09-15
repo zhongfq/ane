@@ -4,7 +4,45 @@
 
 #import "openaneWeibo.h"
 
+#define ANE_FUNCTION(f) static FREObject (f)(FREContext ctx, void *data, uint32_t argc, FREObject argv[])
+#define MAP_FUNCTION(fn, f, data) {(const uint8_t *)(fn), (data), &(f)}
+#define FRESTR(s) ((const uint8_t *)(s))
+
+#define FREPrint(s) FREDispatchStatusEventAsync(ctx, FRESTR("print"), FRESTR(s))
+#define UNUSED(e) (void)(e)
+
+static NSString *openaneObjectToString(FREObject obj)
+{
+    const uint8_t *value = nil;
+    uint32_t len = 0;
+    
+    if (FREGetObjectAsUTF8(obj, &len, &value) == FRE_OK)
+    {
+        return [NSString stringWithUTF8String:(const char *)value];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
+static NSString *openaneObjectToJSONString(NSObject *obj)
+{
+    NSData *data = [NSJSONSerialization dataWithJSONObject:obj options:0 error:nil];
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
 @implementation WeiboConnector
+
+- (id)initWithContext:(FREContext)ctx
+{
+    if ((self = [super init]) != nil)
+    {
+        _context = ctx;
+    }
+    
+    return self;
+}
 
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response
 {
@@ -31,48 +69,7 @@
 
 @end
 
-void openaneWeiboInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
-{
-    *extDataToSet = NULL;
-    *ctxInitializerToSet = &openaneWeiboContextInitializer;
-    *ctxFinalizerToSet = &openaneWeiboContextFinalizer;
-}
-
-void openaneWeiboFinalizer(void *extData)
-{
-}
-
-void openaneWeiboContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
-{
-    @autoreleasepool {
-        static FRENamedFunction funcs[] =
-        {
-            MAP_FUNCTION("init", openaneWeiboFuncInit, NULL),
-            MAP_FUNCTION("authorize", openaneWeiboFuncAuthorize, NULL),
-            MAP_FUNCTION("handleOpenURL", openaneWeiboFuncHandleOpenURL, NULL),
-        };
-        
-        *numFunctionsToSet = sizeof(funcs) / sizeof(FRENamedFunction);
-        *functionsToSet = funcs;
-        
-        WeiboConnector *connector = [[WeiboConnector alloc] initWithContext:ctx];
-        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
-    }
-}
-
-void openaneWeiboContextFinalizer(FREContext ctx)
-{
-    @autoreleasepool {
-        WeiboConnector* connector = openaneWeiboContextNativeData(ctx);
-        if (connector != NULL)
-        {
-            CFBridgingRelease((__bridge CFTypeRef)connector);
-            FRESetContextNativeData(ctx, NULL);
-        }
-    }
-}
-
-WeiboConnector *openaneWeiboContextNativeData(FREContext ctx)
+static WeiboConnector *openaneWeiboContextNativeData(FREContext ctx)
 {
     void *ptr = NULL;
     if (FREGetContextNativeData(ctx, &ptr) == FRE_OK)
@@ -137,4 +134,45 @@ ANE_FUNCTION(openaneWeiboFuncHandleOpenURL)
         
         return NULL;
     }
+}
+
+static void openaneWeiboContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet)
+{
+    @autoreleasepool {
+        static FRENamedFunction funcs[] =
+        {
+            MAP_FUNCTION("init", openaneWeiboFuncInit, NULL),
+            MAP_FUNCTION("authorize", openaneWeiboFuncAuthorize, NULL),
+            MAP_FUNCTION("handleOpenURL", openaneWeiboFuncHandleOpenURL, NULL),
+        };
+        
+        *numFunctionsToSet = sizeof(funcs) / sizeof(FRENamedFunction);
+        *functionsToSet = funcs;
+        
+        WeiboConnector *connector = [[WeiboConnector alloc] initWithContext:ctx];
+        FRESetContextNativeData(ctx, (void *)CFBridgingRetain(connector));
+    }
+}
+
+static void openaneWeiboContextFinalizer(FREContext ctx)
+{
+    @autoreleasepool {
+        WeiboConnector* connector = openaneWeiboContextNativeData(ctx);
+        if (connector != NULL)
+        {
+            CFBridgingRelease((__bridge CFTypeRef)connector);
+            FRESetContextNativeData(ctx, NULL);
+        }
+    }
+}
+
+void openaneWeiboInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet)
+{
+    *extDataToSet = NULL;
+    *ctxInitializerToSet = &openaneWeiboContextInitializer;
+    *ctxFinalizerToSet = &openaneWeiboContextFinalizer;
+}
+
+void openaneWeiboFinalizer(void *extData)
+{
 }

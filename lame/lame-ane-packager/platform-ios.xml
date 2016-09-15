@@ -1,0 +1,9 @@
+<platform xmlns="http://ns.adobe.com/air/extension/20.0"> 
+    <description>openane-lame</description> 
+    <copyright>2016 Open ANE</copyright>
+    <linkerOptions>
+        <option>-lc++</option>
+    </linkerOptions>
+    <packagedDependencies>
+    </packagedDependencies>
+</platform>

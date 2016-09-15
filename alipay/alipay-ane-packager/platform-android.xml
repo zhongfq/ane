@@ -3,6 +3,5 @@
     <copyright>2016 Open ANE</copyright>
     <packagedDependencies>
         <packagedDependency>alipaysdk.jar</packagedDependency>
-        <packagedDependency>openane.jar</packagedDependency>
     </packagedDependencies>
 </platform>

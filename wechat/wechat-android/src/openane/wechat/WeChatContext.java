@@ -2,7 +2,7 @@ package openane.wechat;
 
 import android.util.Log;
 import com.adobe.fre.FREFunction;
-import openane.openane.OpenaneContext;
+import openane.wechat.core.OpenaneContext;
 
 import java.util.HashMap;
 import java.util.Map;

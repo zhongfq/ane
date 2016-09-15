@@ -6,7 +6,7 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/TencentOAuthObject.h>
 #import <TencentOpenAPI/TencentApiInterface.h>
-#import "openane.h"
+#import "FlashRuntimeExtensions.h"
 
 typedef enum {
     TencentOAuthStatusSuccess = 0,
@@ -14,9 +14,12 @@ typedef enum {
     TencentOAuthStatusFail = -2,
 } TencentOAuthStatus;
 
-@interface TencentConnector : Connector<TencentSessionDelegate>
+@interface TencentConnector : NSObject<TencentSessionDelegate>
 
 @property(readwrite, strong, nonatomic) TencentOAuth *oauth;
+@property(readonly, assign, nonatomic) FREContext context;
+
+- (id)initWithContext:(FREContext) ctx;
 
 // Tencent
 - (void)tencentDidLogin;
@@ -29,15 +32,5 @@ typedef enum {
 
 @end
 
-#define DLOG(fmt, ...) OPENANE_LOG(@"openaneTencent", fmt, ##__VA_ARGS__)
-
 void openaneTencentInitializer(void **extDataToSet, FREContextInitializer *ctxInitializerToSet, FREContextFinalizer *ctxFinalizerToSet);
 void openaneTencentFinalizer(void *extData);
-
-void openaneTencentContextInitializer(void *extData, const uint8_t *ctxType, FREContext ctx, uint32_t *numFunctionsToSet, const FRENamedFunction **functionsToSet);
-void openaneTencentContextFinalizer(FREContext ctx);
-TencentConnector *openaneTencentContextNativeData(FREContext ctx);
-
-ANE_FUNCTION(openaneTencentFuncInit);
-ANE_FUNCTION(openaneTencentFuncAuthorize);
-ANE_FUNCTION(openaneTencentFuncHandleOpenURL);

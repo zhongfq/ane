@@ -20,10 +20,10 @@ public class Weibo extends EventDispatcher {
     private static const STATUS_CODE_OK:int = 0;
     private static const STATUS_CODE_CANCEL:int = -1;
     private static const STATUS_CODE_FAIL:int = -3;
-    private static var _defaultInstance:Weibo;
+    private static var _weibo:Weibo;
 
-    public static function get defaultInstance():Weibo {
-        return _defaultInstance ||= new Weibo();
+    public static function get weibo():Weibo {
+        return _weibo ||= new Weibo();
     }
 
     private var _context:ExtensionContext;
@@ -31,12 +31,12 @@ public class Weibo extends EventDispatcher {
     private var _urlScheme:String;
 
     public function Weibo() {
-        if (_defaultInstance) {
-            throw new Error(format("use %s.defaultInstance", getQualifiedClassName(Weibo)));
+        if (_weibo) {
+            throw new Error(format("use %s.weibo", getQualifiedClassName(Weibo)));
         }
 
         if (Capabilities.os.search(/Linux|iPhone/) >= 0) {
-            _context = ExtensionContext.createExtensionContext("openane.weibo.Weibo", "");
+            _context = ExtensionContext.createExtensionContext("openane.Weibo", "");
             _context.addEventListener(StatusEvent.STATUS, statusHandler);
             NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, invokeHandler);
         } else {

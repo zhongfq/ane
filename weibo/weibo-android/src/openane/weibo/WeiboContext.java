@@ -6,7 +6,7 @@ import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
-import openane.openane.OpenaneContext;
+import openane.weibo.core.OpenaneContext;
 
 import java.util.HashMap;
 import java.util.Map;

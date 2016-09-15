@@ -23,23 +23,6 @@
 		0EAA225F1CAA105A0095CE9A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAA225E1CAA105A0095CE9A /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0E6775761CBB8FE5009129DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E6775721CBB8FE5009129DD /* openane.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0E5C71C01CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-		0E6775791CBB9009009129DD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0E6775721CBB8FE5009129DD /* openane.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 0E5C71BF1CACF54B0014BDC3;
-			remoteInfo = openane;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0E5C71051CAA791B0014BDC3 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
 		0E5C71061CAA791B0014BDC3 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
@@ -133,7 +116,7 @@
 		0E5C715F1CAA791B0014BDC3 /* RSADataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataSigner.m; sourceTree = "<group>"; };
 		0E5C71601CAA791B0014BDC3 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSADataVerifier.h; sourceTree = "<group>"; };
 		0E5C71611CAA791B0014BDC3 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSADataVerifier.m; sourceTree = "<group>"; };
-		0E6775721CBB8FE5009129DD /* openane.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openane.xcodeproj; path = "../../openane/openane-ios/openane.xcodeproj"; sourceTree = "<group>"; };
+		0E728BBB1D879B6C005B7010 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
 		0E962CEA1CA8172D00EF3A30 /* libalipay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libalipay.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E962CED1CA8172E00EF3A30 /* openaneAlipay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = openaneAlipay.h; sourceTree = "<group>"; };
 		0E962CEF1CA8172E00EF3A30 /* openaneAlipay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = openaneAlipay.m; sourceTree = "<group>"; };
@@ -276,18 +259,9 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		0E6775731CBB8FE5009129DD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0E6775771CBB8FE5009129DD /* libopenane.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0E962CE11CA8172D00EF3A30 = {
 			isa = PBXGroup;
 			children = (
-				0E6775721CBB8FE5009129DD /* openane.xcodeproj */,
 				0EAA22491CAA0ECC0095CE9A /* libalipay */,
 				0E962CEC1CA8172E00EF3A30 /* alipay-ios */,
 				0E962CF61CA817FA00EF3A30 /* Frameworks */,
@@ -309,6 +283,7 @@
 				0E5C71041CAA791B0014BDC3 /* openssl */,
 				0E5C71501CAA791B0014BDC3 /* Util */,
 				0E962CED1CA8172E00EF3A30 /* openaneAlipay.h */,
+				0E728BBB1D879B6C005B7010 /* FlashRuntimeExtensions.h */,
 				0E962CEF1CA8172E00EF3A30 /* openaneAlipay.m */,
 			);
 			path = "alipay-ios";
@@ -357,7 +332,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				0E67757A1CBB9009009129DD /* PBXTargetDependency */,
 			);
 			name = alipay;
 			productName = "alipay-ios";
@@ -388,28 +362,12 @@
 			mainGroup = 0E962CE11CA8172D00EF3A30;
 			productRefGroup = 0E962CEB1CA8172D00EF3A30 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0E6775731CBB8FE5009129DD /* Products */;
-					ProjectRef = 0E6775721CBB8FE5009129DD /* openane.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0E962CE91CA8172D00EF3A30 /* alipay */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0E6775771CBB8FE5009129DD /* libopenane.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libopenane.a;
-			remoteRef = 0E6775761CBB8FE5009129DD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		0E5C64F21CBB7571002776E1 /* ShellScript */ = {
@@ -445,14 +403,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0E67757A1CBB9009009129DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = openane;
-			targetProxy = 0E6775791CBB9009009129DD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0E962CF11CA8172E00EF3A30 /* Debug */ = {
@@ -548,7 +498,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/alipay-ios",
-					"../../openane/openane-ios/openane",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -575,7 +524,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/alipay-ios",
-					"../../openane/openane-ios/openane",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
